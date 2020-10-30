@@ -3,12 +3,12 @@ import time
 from pytest import fixture
 
 
-@fixture(scope="session")
+@fixture(scope="module")
 def vm():
     """
-    Start a vagrant machine at the beginning of test session.
+    Start a vagrant machine at the beginning of test module.
     Then yield to all the tests
-    Tear down the vagrant machine at the end of the test session
+    Tear down the vagrant machine at the end of the test module
     """
     run_cmd(["vagrant", "up"])
     time.sleep(10)
@@ -52,7 +52,7 @@ def test_ssh_connection(vm):
             "-o",
             "StrictHostKeyChecking=no",
             "-o",
-            "UserKnownHostsFile=dev/null",
+            "UserKnownHostsFile=/dev/null",
             "vagrant@192.168.33.10",
             "echo",
             "hello",

@@ -28,5 +28,5 @@ make test
 ## Pytest interesting points
 
 * A test passes if the command succeeds and fails if the command fails.
-* A [fixture](https://docs.pytest.org/en/stable/fixture.html#scope-sharing-fixtures-across-classes-modules-packages-or-session) is used to create a vagrant machine at the start of the test session and tear it down at the end.
+* A [fixture](https://docs.pytest.org/en/stable/fixture.html#scope-sharing-fixtures-across-classes-modules-packages-or-session) is used to create a vagrant machine at the start of the test module and tear it down at the end.
 * If a command fails then an exception is raised. This is the mechanism for marking a test as a failure. The raised exception tells pytest the test failed. If no exception is raised then pytest marks the test as passing. This avoids adding `assert result.returncode == 0` after every test.

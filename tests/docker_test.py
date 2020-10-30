@@ -5,7 +5,7 @@ import requests
 
 PORT = 3000
 
-@fixture(scope="session")
+@fixture(scope="module")
 def container():
     run_cmd(["docker", "build", "-t", "app:latest", "app"])
     run_cmd(
