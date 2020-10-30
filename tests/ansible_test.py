@@ -5,6 +5,11 @@ from pytest import fixture
 
 @fixture(scope="session")
 def vm():
+    """
+    Start a vagrant machine at the beginning of test session.
+    Then yield to all the tests
+    Tear down the vagrant machine at the end of the test session
+    """
     run_cmd(["vagrant", "up"])
     time.sleep(10)
 
@@ -14,6 +19,13 @@ def vm():
 
 
 def run_cmd(cmd):
+    """
+    Run command and raise subprocess.CalledProcessError exception if command fails.
+    
+    The benefit of raises an exception is pytest will fail the test.
+    If a test function doesn't raise an exception then it's marked as a success.
+    This avoids needing to call assert result.returncode == 0 after every test.
+    """
     print("\nRunning command the following command:")
     print(" ".join(cmd))
     subprocess.run(cmd, check=True)
