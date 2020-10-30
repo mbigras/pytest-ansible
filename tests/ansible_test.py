@@ -26,7 +26,7 @@ def run_cmd(cmd):
     If a test function doesn't raise an exception then it's marked as a success.
     This avoids needing to call assert result.returncode == 0 after every test.
     """
-    print("\nRunning command the following command:")
+    print("\nRunning the following command:")
     print(" ".join(cmd))
     subprocess.run(cmd, check=True)
 
