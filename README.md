@@ -1,4 +1,4 @@
-# pytest-ansible
+# pytest-infrastructure
 
 > Illustrates testing infrastructure.
 
@@ -6,13 +6,17 @@
 
 Inspired by [terratest](https://github.com/gruntwork-io/terratest).
 You create infrastructure, test the infrastructure, and tear it down.
-Terratest uses golang and terraform. This repository illustrates the same idea with python, vagrant, and ansible.
+Terratest uses golang and terraform. This repository illustrates the same idea with python, vagrant, and ansible. Also there is a docker test.
 
 This is what happens when you type `make test`:
 
 - A vagrant machine is launched
 - Tests are performed by running commands.
 - The vagrant machine is torn down
+- A docker image is built
+- A docker container is created and started
+- Tests are performed by running commands and issuing requests
+- The docker container is removed
 
 ## Quickstart
 
